@@ -65,9 +65,13 @@ unidades._
 __Interpretación $R^2$:__ _El modelo de regresión lineal obtenido explica el `r paste(100*summary(reg)$r.squared,"%")` de la variabilidad total._
 
 ### Pruebas de hipótesis
+$$H_0: \beta_2=0$$.
+$$H_1: \beta_2\neq 0$$
 
-__Ejercicio lector__
-
+Como sabemos, el valor  $t= `r summary(reg)$coefficients[1,3]`$ es `r tex<-"menor";if(summary(reg)$coefficients[2,3]>qt(0.975 , df =nrow(data)-2)) tex<-"menor"; tex` que 
+$t_{`r (nrow(data)-2)`}(\frac{\alpha}{2})= `r qt(0.975 , df =nrow(data)-2)`$
+`r tex<-"se rechazo"; if(summary(reg)$coefficients[2,3]>qt(0.975 , df =nrow(data)-2)) tex<-"no rechazo"; tex`
+$H_0: \beta_2=0$.
 
 
 ### Análisis de varianza
@@ -109,4 +113,7 @@ plot(data[,"Ventas"],data[,"Utilidad"])
 plot(residuo,prediccion)
 plot(residuo,data[,"Ventas"])
 ```
+
+
+
 
